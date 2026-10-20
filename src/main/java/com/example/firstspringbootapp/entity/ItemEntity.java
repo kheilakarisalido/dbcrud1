@@ -13,7 +13,6 @@ public class ItemEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int itemid;
-
 	private String name;
 	private String unit;
 	private float price;

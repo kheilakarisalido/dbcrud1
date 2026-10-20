@@ -27,19 +27,21 @@ public class ItemService {
 	}
 
 	public ItemEntity putItem(int id, ItemEntity newItemDetails) {
-		ItemEntity item = itemRepository.findById(id)
-				.orElseThrow(() -> new ResponseStatusException(
-						HttpStatus.NOT_FOUND, "Item " + id + " does not exist!"));
-		item.setName(newItemDetails.getName());
-		item.setUnit(newItemDetails.getUnit());
-		item.setPrice(newItemDetails.getPrice());
-		return itemRepository.save(item);
+		ItemEntity existingItem = itemRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item " + id + " does not exist!"));
+
+		existingItem.setName(newItemDetails.getName());
+		existingItem.setUnit(newItemDetails.getUnit());
+		existingItem.setPrice(newItemDetails.getPrice());
+
+		return itemRepository.save(existingItem);
 	}
 
 	public String deleteItem(int id) {
 		if (!itemRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item " + id + " does not exist!");
 		}
+
 		itemRepository.deleteById(id);
 		return "Item " + id + " is successfully deleted!";
 	}
