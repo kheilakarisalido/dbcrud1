@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.example.firstspringbootapp.config.LeadingSlashRedirectFilter;
+import com.example.firstspringbootapp.service.ItemService.LeadingSlashRedirectFilter;
 import com.example.firstspringbootapp.repository.ItemRepository;
 
 @SpringBootTest(properties = {
